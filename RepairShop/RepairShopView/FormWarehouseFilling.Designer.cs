@@ -1,7 +1,7 @@
 ﻿
 namespace RepairShopView
 {
-    partial class FormCreateOrder
+    partial class FormWarehouseFilling
     {
         /// <summary>
         /// Required designer variable.
@@ -29,103 +29,101 @@ namespace RepairShopView
         /// </summary>
         private void InitializeComponent()
         {
-			this.labelProduct = new System.Windows.Forms.Label();
+			this.labelWarehouse = new System.Windows.Forms.Label();
+			this.comboBoxWarehouse = new System.Windows.Forms.ComboBox();
+			this.comboBoxComponent = new System.Windows.Forms.ComboBox();
+			this.labelComponent = new System.Windows.Forms.Label();
 			this.labelCount = new System.Windows.Forms.Label();
-			this.labelSum = new System.Windows.Forms.Label();
-			this.comboBoxRepair = new System.Windows.Forms.ComboBox();
 			this.textBoxCount = new System.Windows.Forms.TextBox();
-			this.textBoxSum = new System.Windows.Forms.TextBox();
 			this.buttonSave = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// labelProduct
+			// labelWarehouse
 			// 
-			this.labelProduct.AutoSize = true;
-			this.labelProduct.Location = new System.Drawing.Point(13, 13);
-			this.labelProduct.Name = "labelProduct";
-			this.labelProduct.Size = new System.Drawing.Size(48, 13);
-			this.labelProduct.TabIndex = 0;
-			this.labelProduct.Text = "Ремонт:";
+			this.labelWarehouse.AutoSize = true;
+			this.labelWarehouse.Location = new System.Drawing.Point(6, 9);
+			this.labelWarehouse.Name = "labelWarehouse";
+			this.labelWarehouse.Size = new System.Drawing.Size(41, 13);
+			this.labelWarehouse.TabIndex = 2;
+			this.labelWarehouse.Text = "Склад:";
+			// 
+			// comboBoxWarehouse
+			// 
+			this.comboBoxWarehouse.FormattingEnabled = true;
+			this.comboBoxWarehouse.Location = new System.Drawing.Point(78, 4);
+			this.comboBoxWarehouse.Name = "comboBoxWarehouse";
+			this.comboBoxWarehouse.Size = new System.Drawing.Size(194, 21);
+			this.comboBoxWarehouse.TabIndex = 3;
+			// 
+			// comboBoxComponent
+			// 
+			this.comboBoxComponent.FormattingEnabled = true;
+			this.comboBoxComponent.Location = new System.Drawing.Point(78, 31);
+			this.comboBoxComponent.Name = "comboBoxComponent";
+			this.comboBoxComponent.Size = new System.Drawing.Size(194, 21);
+			this.comboBoxComponent.TabIndex = 4;
+			// 
+			// labelComponent
+			// 
+			this.labelComponent.AutoSize = true;
+			this.labelComponent.Location = new System.Drawing.Point(3, 34);
+			this.labelComponent.Name = "labelComponent";
+			this.labelComponent.Size = new System.Drawing.Size(66, 13);
+			this.labelComponent.TabIndex = 5;
+			this.labelComponent.Text = "Компонент:";
 			// 
 			// labelCount
 			// 
 			this.labelCount.AutoSize = true;
-			this.labelCount.Location = new System.Drawing.Point(12, 46);
+			this.labelCount.Location = new System.Drawing.Point(3, 60);
 			this.labelCount.Name = "labelCount";
 			this.labelCount.Size = new System.Drawing.Size(69, 13);
-			this.labelCount.TabIndex = 1;
+			this.labelCount.TabIndex = 6;
 			this.labelCount.Text = "Количество:";
-			// 
-			// labelSum
-			// 
-			this.labelSum.AutoSize = true;
-			this.labelSum.Location = new System.Drawing.Point(13, 72);
-			this.labelSum.Name = "labelSum";
-			this.labelSum.Size = new System.Drawing.Size(44, 13);
-			this.labelSum.TabIndex = 2;
-			this.labelSum.Text = "Сумма:";
-			// 
-			// comboBoxRepair
-			// 
-			this.comboBoxRepair.FormattingEnabled = true;
-			this.comboBoxRepair.Location = new System.Drawing.Point(97, 13);
-			this.comboBoxRepair.Name = "comboBoxRepair";
-			this.comboBoxRepair.Size = new System.Drawing.Size(168, 21);
-			this.comboBoxRepair.TabIndex = 3;
-			this.comboBoxRepair.SelectedIndexChanged += new System.EventHandler(this.ComboBoxRepair_SelectedIndexChanged);
 			// 
 			// textBoxCount
 			// 
-			this.textBoxCount.Location = new System.Drawing.Point(97, 40);
+			this.textBoxCount.Location = new System.Drawing.Point(78, 57);
 			this.textBoxCount.Name = "textBoxCount";
-			this.textBoxCount.Size = new System.Drawing.Size(168, 20);
-			this.textBoxCount.TabIndex = 4;
-			this.textBoxCount.TextChanged += new System.EventHandler(this.TextBoxCount_TextChanged);
-			// 
-			// textBoxSum
-			// 
-			this.textBoxSum.Location = new System.Drawing.Point(97, 72);
-			this.textBoxSum.Name = "textBoxSum";
-			this.textBoxSum.Size = new System.Drawing.Size(168, 20);
-			this.textBoxSum.TabIndex = 5;
+			this.textBoxCount.Size = new System.Drawing.Size(194, 20);
+			this.textBoxCount.TabIndex = 7;
 			// 
 			// buttonSave
 			// 
-			this.buttonSave.Location = new System.Drawing.Point(97, 110);
+			this.buttonSave.Location = new System.Drawing.Point(115, 83);
 			this.buttonSave.Name = "buttonSave";
 			this.buttonSave.Size = new System.Drawing.Size(75, 23);
-			this.buttonSave.TabIndex = 6;
+			this.buttonSave.TabIndex = 8;
 			this.buttonSave.Text = "Сохранить";
 			this.buttonSave.UseVisualStyleBackColor = true;
 			this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
 			// 
 			// buttonCancel
 			// 
-			this.buttonCancel.Location = new System.Drawing.Point(190, 110);
+			this.buttonCancel.Location = new System.Drawing.Point(197, 83);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 7;
+			this.buttonCancel.TabIndex = 9;
 			this.buttonCancel.Text = "Отмена";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
 			// 
-			// FormCreateOrder
+			// FormWarehouseFilling
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(279, 148);
+			this.ClientSize = new System.Drawing.Size(284, 109);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonSave);
-			this.Controls.Add(this.textBoxSum);
 			this.Controls.Add(this.textBoxCount);
-			this.Controls.Add(this.comboBoxRepair);
-			this.Controls.Add(this.labelSum);
 			this.Controls.Add(this.labelCount);
-			this.Controls.Add(this.labelProduct);
-			this.Name = "FormCreateOrder";
-			this.Text = "Заказ";
-			this.Load += new System.EventHandler(this.FormCreateOrder_Load);
+			this.Controls.Add(this.labelComponent);
+			this.Controls.Add(this.comboBoxComponent);
+			this.Controls.Add(this.comboBoxWarehouse);
+			this.Controls.Add(this.labelWarehouse);
+			this.Name = "FormWarehouseFilling";
+			this.Text = "Пополнение склада";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -133,12 +131,12 @@ namespace RepairShopView
 
         #endregion
 
-        private System.Windows.Forms.Label labelProduct;
+        private System.Windows.Forms.Label labelWarehouse;
+        private System.Windows.Forms.ComboBox comboBoxWarehouse;
+        private System.Windows.Forms.ComboBox comboBoxComponent;
+        private System.Windows.Forms.Label labelComponent;
         private System.Windows.Forms.Label labelCount;
-        private System.Windows.Forms.Label labelSum;
-        private System.Windows.Forms.ComboBox comboBoxRepair;
         private System.Windows.Forms.TextBox textBoxCount;
-        private System.Windows.Forms.TextBox textBoxSum;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
     }
