@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepairShopBusinessLogic", "RepairShopBusinessLogic\RepairShopBusinessLogic.csproj", "{B49E4745-9096-4638-A275-8BB7A37BCDD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepairShopBusinessLogic", "RepairShopBusinessLogic\RepairShopBusinessLogic.csproj", "{FE089495-CC98-4EFC-A1A9-A3350841B65A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepairShopListImplement", "RepairShopListImplement\RepairShopListImplement.csproj", "{95574B01-5DB4-4FF0-AE8B-D50EDC0176C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepairShopFileImplement", "RepairShopFileImplement\RepairShopFileImplement.csproj", "{6DA2EB93-6AA0-4A79-8C10-A73FB95099DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepairShopListImplement", "RepairShopListImplement\RepairShopListImplement.csproj", "{1638489F-7F69-46DF-8DE2-BF4DFCA173AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepairShopView", "RepairShopView\RepairShopView.csproj", "{B484B7E3-D3F4-41A6-8421-191EBB79D961}"
 EndProject
@@ -15,14 +17,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B49E4745-9096-4638-A275-8BB7A37BCDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B49E4745-9096-4638-A275-8BB7A37BCDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B49E4745-9096-4638-A275-8BB7A37BCDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B49E4745-9096-4638-A275-8BB7A37BCDD7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95574B01-5DB4-4FF0-AE8B-D50EDC0176C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95574B01-5DB4-4FF0-AE8B-D50EDC0176C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95574B01-5DB4-4FF0-AE8B-D50EDC0176C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95574B01-5DB4-4FF0-AE8B-D50EDC0176C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE089495-CC98-4EFC-A1A9-A3350841B65A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE089495-CC98-4EFC-A1A9-A3350841B65A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE089495-CC98-4EFC-A1A9-A3350841B65A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE089495-CC98-4EFC-A1A9-A3350841B65A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DA2EB93-6AA0-4A79-8C10-A73FB95099DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DA2EB93-6AA0-4A79-8C10-A73FB95099DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DA2EB93-6AA0-4A79-8C10-A73FB95099DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DA2EB93-6AA0-4A79-8C10-A73FB95099DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1638489F-7F69-46DF-8DE2-BF4DFCA173AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1638489F-7F69-46DF-8DE2-BF4DFCA173AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1638489F-7F69-46DF-8DE2-BF4DFCA173AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1638489F-7F69-46DF-8DE2-BF4DFCA173AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B484B7E3-D3F4-41A6-8421-191EBB79D961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B484B7E3-D3F4-41A6-8421-191EBB79D961}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B484B7E3-D3F4-41A6-8421-191EBB79D961}.Release|Any CPU.ActiveCfg = Release|Any CPU

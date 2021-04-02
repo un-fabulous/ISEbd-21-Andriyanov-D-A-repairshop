@@ -44,16 +44,16 @@ namespace RepairShopView
             this.labelProduct.AutoSize = true;
             this.labelProduct.Location = new System.Drawing.Point(13, 13);
             this.labelProduct.Name = "labelProduct";
-            this.labelProduct.Size = new System.Drawing.Size(48, 13);
+            this.labelProduct.Size = new System.Drawing.Size(54, 13);
             this.labelProduct.TabIndex = 0;
-            this.labelProduct.Text = "Ремонт:";
+            this.labelProduct.Text = "Изделие:";
             // 
             // labelCount
             // 
             this.labelCount.AutoSize = true;
             this.labelCount.Location = new System.Drawing.Point(12, 46);
             this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(69, 13);
+            this.labelCount.Size = new System.Drawing.Size(72, 13);
             this.labelCount.TabIndex = 1;
             this.labelCount.Text = "Количество:";
             // 
@@ -62,7 +62,7 @@ namespace RepairShopView
             this.labelSum.AutoSize = true;
             this.labelSum.Location = new System.Drawing.Point(13, 72);
             this.labelSum.Name = "labelSum";
-            this.labelSum.Size = new System.Drawing.Size(44, 13);
+            this.labelSum.Size = new System.Drawing.Size(45, 13);
             this.labelSum.TabIndex = 2;
             this.labelSum.Text = "Сумма:";
             // 
@@ -79,7 +79,7 @@ namespace RepairShopView
             // 
             this.textBoxCount.Location = new System.Drawing.Point(97, 40);
             this.textBoxCount.Name = "textBoxCount";
-            this.textBoxCount.Size = new System.Drawing.Size(168, 20);
+            this.textBoxCount.Size = new System.Drawing.Size(168, 22);
             this.textBoxCount.TabIndex = 4;
             this.textBoxCount.TextChanged += new System.EventHandler(this.TextBoxCount_TextChanged);
             // 
@@ -87,7 +87,7 @@ namespace RepairShopView
             // 
             this.textBoxSum.Location = new System.Drawing.Point(97, 72);
             this.textBoxSum.Name = "textBoxSum";
-            this.textBoxSum.Size = new System.Drawing.Size(168, 20);
+            this.textBoxSum.Size = new System.Drawing.Size(168, 22);
             this.textBoxSum.TabIndex = 5;
             // 
             // buttonSave

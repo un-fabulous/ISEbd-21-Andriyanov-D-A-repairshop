@@ -73,7 +73,7 @@ namespace RepairShopView
             // 
             this.изделияToolStripMenuItem.Name = "изделияToolStripMenuItem";
             this.изделияToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.изделияToolStripMenuItem.Text = "Ремонт";
+            this.изделияToolStripMenuItem.Text = "Изделия";
             this.изделияToolStripMenuItem.Click += new System.EventHandler(this.ИзделияToolStripMenuItem_Click);
             // 
             // buttonCreateOrder

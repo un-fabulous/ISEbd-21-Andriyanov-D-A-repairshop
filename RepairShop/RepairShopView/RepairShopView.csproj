@@ -145,11 +145,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RepairShopBusinessLogic\RepairShopBusinessLogic.csproj">
-      <Project>{b49e4745-9096-4638-a275-8bb7a37bcdd7}</Project>
+      <Project>{fe089495-cc98-4efc-a1a9-a3350841b65a}</Project>
       <Name>RepairShopBusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RepairShopFileImplement\RepairShopFileImplement.csproj">
+      <Project>{6da2eb93-6aa0-4a79-8c10-a73fb95099db}</Project>
+      <Name>RepairShopFileImplement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RepairShopListImplement\RepairShopListImplement.csproj">
-      <Project>{95574b01-5db4-4ff0-ae8b-d50edc0176c6}</Project>
+      <Project>{1638489f-7f69-46df-8de2-bf4dfca173af}</Project>
       <Name>RepairShopListImplement</Name>
     </ProjectReference>
   </ItemGroup>
