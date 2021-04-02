@@ -84,16 +84,6 @@ namespace RepairShopFileImplement.Implements
 
         private OrderViewModel CreateModel(Order order)
         {
-            string repairName = null;
-
-            foreach (var repair in source.Repairs)
-            {
-                if (repair.Id == order.RepairId)
-                {
-                    repairName = repair.RepairName;
-                }
-            }
-
             return new OrderViewModel
             {
                 Id = order.Id,
