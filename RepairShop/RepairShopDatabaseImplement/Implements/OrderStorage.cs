@@ -15,11 +15,13 @@ namespace RepairShopDatabaseImplement.Implements
         {
             using (var context = new RepairShopDatabase())
             {
-                return context.Orders.Select(rec => new OrderViewModel
+                return context.Orders
+                    .Include(rec => rec.Repair)
+                    .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
                     RepairId = rec.RepairId,
-                    RepairName = context.Repairs.FirstOrDefault(x => x.Id == rec.RepairId).RepairName,
+                    RepairName = rec.Repair.RepairName,
                     Count = rec.Count,
                     Sum = rec.Sum,
                     Status = rec.Status,
@@ -38,11 +40,13 @@ namespace RepairShopDatabaseImplement.Implements
             using (var context = new RepairShopDatabase())
             {
                 return context.Orders
-                .Where(rec => rec.Id.Equals(model.Id)).Select(rec => new OrderViewModel
+                .Include(rec => rec.Repair)
+                .Where(rec => rec.Id.Equals(model.Id))
+                .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
                     RepairId = rec.RepairId,
-                    RepairName = context.Repairs.FirstOrDefault(x => x.Id == rec.RepairId).RepairName,
+                    RepairName = rec.Repair.RepairName,
                     Count = rec.Count,
                     Sum = rec.Sum,
                     Status = rec.Status,
@@ -62,13 +66,15 @@ namespace RepairShopDatabaseImplement.Implements
             using (var context = new RepairShopDatabase())
             {
                 var order = context.Orders
+                .Include(rec => rec.Repair)
                 .FirstOrDefault(rec => rec.Id == model.Id);
+
                 return order != null ?
                 new OrderViewModel
                 {
                     Id = order.Id,
                     RepairId = order.RepairId,
-                    RepairName = context.Repairs.FirstOrDefault(x => x.Id == order.RepairId).RepairName,
+                    RepairName = order.Repair.RepairName,
                     Count = order.Count,
                     Sum = order.Sum,
                     Status = order.Status,
