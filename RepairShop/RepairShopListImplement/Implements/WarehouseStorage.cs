@@ -17,6 +17,12 @@ namespace RepairShopListImplement.Implements
         {
             source = DataListSingleton.GetInstance();
         }
+
+        public bool WriteOff(int RepairCount, int RepairId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<WarehouseViewModel> GetFullList()
         {
             List<WarehouseViewModel> result = new List<WarehouseViewModel>();
@@ -160,6 +166,7 @@ namespace RepairShopListImplement.Implements
                 DateCreate = warehouse.DateCreate,
                 WarehouseComponents = warehouseComponents
             };
+
         }
     }
 }

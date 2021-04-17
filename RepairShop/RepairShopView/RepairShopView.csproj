@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B484B7E3-D3F4-41A6-8421-191EBB79D961}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>GiftShopView</RootNamespace>
-    <AssemblyName>GiftShopView</AssemblyName>
+    <RootNamespace>RepairShopView</RootNamespace>
+    <AssemblyName>RepairShopView</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -172,11 +172,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RepairShopBusinessLogic\RepairShopBusinessLogic.csproj">
-      <Project>{a22c59ca-56d2-4597-9656-ee90361e83d8}</Project>
+      <Project>{d3a249c2-fe76-4a30-8dc1-9a228d60a122}</Project>
       <Name>RepairShopBusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RepairShopFileImplement\RepairShopFileImplement.csproj">
+      <Project>{98cb1776-78ed-41aa-a33c-d43c0b196188}</Project>
+      <Name>RepairShopFileImplement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RepairShopListImplement\RepairShopListImplement.csproj">
-      <Project>{e782079f-44a2-4eb7-87e8-265e09278ebb}</Project>
+      <Project>{a23e9082-9edb-43ab-9f14-0bf85a735ab1}</Project>
       <Name>RepairShopListImplement</Name>
     </ProjectReference>
   </ItemGroup>

@@ -19,6 +19,7 @@ namespace RepairShopBusinessLogic.Interfaces
         void Update(WarehouseBindingModel model);
 
         void Delete(WarehouseBindingModel model);
-                
+
+        bool WriteOff(int RepairCount, int RepairId);
     }
 }

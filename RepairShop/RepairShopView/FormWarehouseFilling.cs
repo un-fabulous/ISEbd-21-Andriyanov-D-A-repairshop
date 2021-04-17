@@ -10,40 +10,30 @@ using System.Windows.Forms;
 using RepairShopBusinessLogic.ViewModels;
 using RepairShopBusinessLogic.BindingModels;
 using RepairShopBusinessLogic.BusinessLogic;
-using RepairShopListImplement.Implements;
-using RepairShopBusinessLogic.Interfaces;
-
+using RepairShopFileImplement.Implements;
+using Unity;
 
 namespace RepairShopView
 {
     public partial class FormWarehouseFilling : Form
     {
 
-        
-        public int ComponentId { 
-            get { return Convert.ToInt32(comboBoxComponent.SelectedValue); }
-            set { comboBoxComponent.SelectedValue = value; } }
-        public int WarehouseId { 
-            get { return Convert.ToInt32(comboBoxWarehouse.SelectedValue); }
-            set { comboBoxWarehouse.SelectedValue = value; } }
-        public int Count { 
-            get { return Convert.ToInt32(textBoxCount.Text); } 
-            set { textBoxCount.Text = value.ToString(); } }
+        [Dependency]
+        public new IUnityContainer Container { get; set; }
+        public int ComponentId { get { return Convert.ToInt32(comboBoxComponent.SelectedValue); } set { comboBoxComponent.SelectedValue = value; } }
+        public int WarehouseId { get { return Convert.ToInt32(comboBoxWarehouse.SelectedValue); } set { comboBoxWarehouse.SelectedValue = value; } }
+        public int Count { get { return Convert.ToInt32(textBoxCount.Text); } set { textBoxCount.Text = value.ToString(); } }
 
         public string ComponentName { get { return comboBoxComponent.Text; } }
 
-        WarehouseLogic _warehouseLogic;
+        private readonly WarehouseLogic _warehouseLogic;
 
-
-        public FormWarehouseFilling(ComponentLogic componentLogic, WarehouseLogic warehouseLogic)
+        public FormWarehouseFilling(ComponentLogic logicC, WarehouseLogic logicW)
         {
             InitializeComponent();
-
-            List<ComponentViewModel> listComponent = componentLogic.Read(null);
-            List<WarehouseViewModel> listWarehouse = warehouseLogic.Read(null);
-
-            _warehouseLogic = warehouseLogic;
-
+            List<ComponentViewModel> listComponent = logicC.Read(null);
+            List<WarehouseViewModel> listWarehouse = logicW.Read(null);
+            _warehouseLogic = logicW;
             if (listComponent != null)
             {
                 comboBoxComponent.DisplayMember = "ComponentName";
@@ -78,7 +68,7 @@ namespace RepairShopView
                 return;
             }
 
-            _warehouseLogic.Filling(new WarehouseBindingModel { Id = WarehouseId }, WarehouseId, ComponentId, Count);
+            _warehouseLogic.Filling(new WarehouseBindingModel { }, WarehouseId, ComponentId, Count, ComponentName);
 
             DialogResult = DialogResult.OK;
             Close();
