@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B484B7E3-D3F4-41A6-8421-191EBB79D961}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>RepairShopView</RootNamespace>
-    <AssemblyName>RepairShopView</AssemblyName>
+    <RootNamespace>GiftShopView</RootNamespace>
+    <AssemblyName>GiftShopView</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
