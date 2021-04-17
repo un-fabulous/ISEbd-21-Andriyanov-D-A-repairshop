@@ -15,9 +15,7 @@ namespace RepairShopDatabaseImplement.Implements
         {
             using (var context = new RepairShopDatabase())
             {
-                return context.Orders
-                    .Include(rec => rec.Repair)
-                    .Select(rec => new OrderViewModel
+                return context.Orders.Include(rec => rec.Repair).Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
                     RepairId = rec.RepairId,
@@ -37,11 +35,12 @@ namespace RepairShopDatabaseImplement.Implements
             {
                 return null;
             }
+
             using (var context = new RepairShopDatabase())
             {
-                return context.Orders
-                .Include(rec => rec.Repair)
-                .Where(rec => rec.Id.Equals(model.Id))
+                return context.Orders.Include(rec => rec.Repair)
+                .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate == model.DateCreate) ||
+                (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date))
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
@@ -51,7 +50,7 @@ namespace RepairShopDatabaseImplement.Implements
                     Sum = rec.Sum,
                     Status = rec.Status,
                     DateCreate = rec.DateCreate,
-                    DateImplement = rec.DateImplement
+                    DateImplement = rec.DateImplement,
                 })
                 .ToList();
             }
@@ -65,10 +64,8 @@ namespace RepairShopDatabaseImplement.Implements
             }
             using (var context = new RepairShopDatabase())
             {
-                var order = context.Orders
-                .Include(rec => rec.Repair)
+                var order = context.Orders.Include(rec => rec.Repair)
                 .FirstOrDefault(rec => rec.Id == model.Id);
-
                 return order != null ?
                 new OrderViewModel
                 {

@@ -128,7 +128,7 @@ namespace RepairShopDatabaseImplement.Migrations
 
             modelBuilder.Entity("RepairShopDatabaseImplement.Models.Order", b =>
                 {
-                    b.HasOne("RepairShopDatabaseImplement.Models.Repair", null)
+                    b.HasOne("RepairShopDatabaseImplement.Models.Repair", "Repair")
                         .WithMany("Order")
                         .HasForeignKey("RepairId")
                         .OnDelete(DeleteBehavior.Cascade)

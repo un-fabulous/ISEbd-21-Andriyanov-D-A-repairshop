@@ -13,6 +13,7 @@ namespace RepairShopDatabaseImplement.Models
         public int RepairId { get; set; }
 
         public virtual Repair Repair { get; set; }
+
         [Required]
         public int Count { get; set; }
 
