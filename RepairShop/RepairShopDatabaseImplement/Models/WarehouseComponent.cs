@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RepairShopDatabaseImplement.Models
 {
-    public class RepairComponent
+    public class WarehouseComponent
     {
         public int Id { get; set; }
 
-        public int RepairId { get; set; }
+        public int WarehouseId { get; set; }
 
         public int ComponentId { get; set; }
 
@@ -18,6 +18,6 @@ namespace RepairShopDatabaseImplement.Models
 
         public virtual Component Component { get; set; }
 
-        public virtual Repair Repair { get; set; }
+        public virtual Warehouse Warehouse { get; set; }
     }
 }

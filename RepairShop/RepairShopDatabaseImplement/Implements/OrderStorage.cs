@@ -15,9 +15,7 @@ namespace RepairShopDatabaseImplement.Implements
         {
             using (var context = new RepairShopDatabase())
             {
-                return context.Orders
-                    .Include(rec => rec.Repair)
-                    .Select(rec => new OrderViewModel
+                return context.Orders.Include(rec => rec.Repair).Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
                     RepairId = rec.RepairId,
@@ -39,10 +37,8 @@ namespace RepairShopDatabaseImplement.Implements
             }
             using (var context = new RepairShopDatabase())
             {
-                return context.Orders
-                .Include(rec => rec.Repair)
-                .Where(rec => rec.Id.Equals(model.Id))
-                .Select(rec => new OrderViewModel
+                return context.Orders.Include(rec => rec.Repair)
+                .Where(rec => rec.Id.Equals(model.Id)).Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
                     RepairId = rec.RepairId,
@@ -65,10 +61,8 @@ namespace RepairShopDatabaseImplement.Implements
             }
             using (var context = new RepairShopDatabase())
             {
-                var order = context.Orders
-                .Include(rec => rec.Repair)
+                var order = context.Orders.Include(rec => rec.Repair)
                 .FirstOrDefault(rec => rec.Id == model.Id);
-
                 return order != null ?
                 new OrderViewModel
                 {

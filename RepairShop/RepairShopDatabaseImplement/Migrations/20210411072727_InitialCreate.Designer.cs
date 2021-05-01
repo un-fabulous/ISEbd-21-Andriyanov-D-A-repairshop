@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace RepairShopDatabaseImplement.Migrations
 {
     [DbContext(typeof(RepairShopDatabase))]
-    [Migration("20210226100033_InitialCreate")]
+    [Migration("20210411072727_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -130,7 +130,7 @@ namespace RepairShopDatabaseImplement.Migrations
 
             modelBuilder.Entity("RepairShopDatabaseImplement.Models.Order", b =>
                 {
-                    b.HasOne("RepairShopDatabaseImplement.Models.Repair", null)
+                    b.HasOne("RepairShopDatabaseImplement.Models.Repair", "Repair")
                         .WithMany("Order")
                         .HasForeignKey("RepairId")
                         .OnDelete(DeleteBehavior.Cascade)

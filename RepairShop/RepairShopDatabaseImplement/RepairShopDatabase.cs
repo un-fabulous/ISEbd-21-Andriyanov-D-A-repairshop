@@ -12,7 +12,7 @@ namespace RepairShopDatabaseImplement
         {
             if (optionsBuilder.IsConfigured == false)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-AP669A3;Initial Catalog=RepairShopDatabase;Integrated Security=True;MultipleActiveResultSets=True;");
+                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-AP669A3;Initial Catalog=RepairShopDatabaseComplicated;Integrated Security=True;MultipleActiveResultSets=True;");
             }
             base.OnConfiguring(optionsBuilder);
         }
@@ -20,5 +20,7 @@ namespace RepairShopDatabaseImplement
         public virtual DbSet<Repair> Repairs { set; get; }
         public virtual DbSet<RepairComponent> RepairComponents { set; get; }
         public virtual DbSet<Order> Orders { set; get; }
+        public virtual DbSet<Warehouse> Warehouses { set; get; }
+        public virtual DbSet<WarehouseComponent> WarehouseComponents { set; get; }
     }
 }
