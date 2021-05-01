@@ -87,7 +87,7 @@ namespace RepairShopView
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.buttonSaveToExcel);
             this.Name = "FormReportComponentRepairs";
-            this.Text = "Ремонты по компонентам";
+            this.Text = "Изделия по компонентам";
             this.Load += new System.EventHandler(this.FormReportProductComponents_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RepairShopBusinessLogic.BusinessLogic;
 using RepairShopBusinessLogic.Interfaces;
+using RepairShopBusinessLogic.ViewModels;
 using RepairShopDatabaseImplement.Implements;
 using Unity;
 using Unity.Lifetime;
@@ -31,10 +32,12 @@ namespace RepairShopView
             currentContainer.RegisterType<IComponentStorage, ComponentStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IOrderStorage, OrderStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IRepairStorage, RepairStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IClientStorage, ClientStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ComponentLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<OrderLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<RepairLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ReportLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ClientLogic>(new HierarchicalLifetimeManager());
             return currentContainer;
         }
     }

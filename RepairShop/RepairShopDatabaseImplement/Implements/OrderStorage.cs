@@ -15,9 +15,12 @@ namespace RepairShopDatabaseImplement.Implements
         {
             using (var context = new RepairShopDatabase())
             {
-                return context.Orders.Include(rec => rec.Repair).Select(rec => new OrderViewModel
+                return context.Orders.Include(rec => rec.Repair).Include(rec => rec.Client)
+                    .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
+                    ClientId = rec.ClientId,
+                    ClientFIO = rec.Client.ClientFIO,
                     RepairId = rec.RepairId,
                     RepairName = rec.Repair.RepairName,
                     Count = rec.Count,
@@ -38,21 +41,24 @@ namespace RepairShopDatabaseImplement.Implements
 
             using (var context = new RepairShopDatabase())
             {
-                return context.Orders.Include(rec => rec.Repair)
-                .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate == model.DateCreate) ||
+                return context.Orders.Include(rec => rec.Repair).Include(rec => rec.Client)
+                .Where(rec => (model.ClientId.HasValue && rec.ClientId == model.ClientId) || (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate == model.DateCreate) ||
                 (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date))
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
+                    ClientId = rec.ClientId,
+                    ClientFIO = rec.Client.ClientFIO,
                     RepairId = rec.RepairId,
                     RepairName = rec.Repair.RepairName,
                     Count = rec.Count,
                     Sum = rec.Sum,
                     Status = rec.Status,
                     DateCreate = rec.DateCreate,
-                    DateImplement = rec.DateImplement,
+                    DateImplement = rec.DateImplement
                 })
                 .ToList();
+
             }
         }
 
@@ -64,12 +70,14 @@ namespace RepairShopDatabaseImplement.Implements
             }
             using (var context = new RepairShopDatabase())
             {
-                var order = context.Orders.Include(rec => rec.Repair)
+                var order = context.Orders.Include(rec => rec.Repair).Include(rec => rec.Client)
                 .FirstOrDefault(rec => rec.Id == model.Id);
                 return order != null ?
                 new OrderViewModel
                 {
                     Id = order.Id,
+                    ClientId = order.ClientId,
+                    ClientFIO = order.Client.ClientFIO,
                     RepairId = order.RepairId,
                     RepairName = order.Repair.RepairName,
                     Count = order.Count,
@@ -130,6 +138,7 @@ namespace RepairShopDatabaseImplement.Implements
             order.Status = model.Status;
             order.DateCreate = model.DateCreate;
             order.DateImplement = model.DateImplement;
+            order.ClientId = model.ClientId.Value;
             return order;
         }
     }

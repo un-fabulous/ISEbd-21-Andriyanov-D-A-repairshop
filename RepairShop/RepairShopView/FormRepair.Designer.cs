@@ -53,7 +53,7 @@ namespace RepairShopView
             this.labelName.AutoSize = true;
             this.labelName.Location = new System.Drawing.Point(13, 13);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(60, 13);
+            this.labelName.Size = new System.Drawing.Size(61, 13);
             this.labelName.TabIndex = 0;
             this.labelName.Text = "Название:";
             // 
@@ -62,7 +62,7 @@ namespace RepairShopView
             this.labelPrice.AutoSize = true;
             this.labelPrice.Location = new System.Drawing.Point(13, 54);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(36, 13);
+            this.labelPrice.Size = new System.Drawing.Size(38, 13);
             this.labelPrice.TabIndex = 1;
             this.labelPrice.Text = "Цена:";
             // 
@@ -70,14 +70,14 @@ namespace RepairShopView
             // 
             this.textBoxName.Location = new System.Drawing.Point(81, 13);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(173, 20);
+            this.textBoxName.Size = new System.Drawing.Size(173, 22);
             this.textBoxName.TabIndex = 2;
             // 
             // textBoxPrice
             // 
             this.textBoxPrice.Location = new System.Drawing.Point(81, 51);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPrice.Size = new System.Drawing.Size(100, 22);
             this.textBoxPrice.TabIndex = 3;
             // 
             // groupBoxComponents
@@ -199,7 +199,7 @@ namespace RepairShopView
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.labelName);
             this.Name = "FormRepair";
-            this.Text = "Ремонт";
+            this.Text = "Изделие";
             this.Load += new System.EventHandler(this.FormRepair_Load);
             this.groupBoxComponents.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
