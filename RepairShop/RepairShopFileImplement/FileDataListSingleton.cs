@@ -20,6 +20,8 @@ namespace RepairShopFileImplement
 
         private readonly string RepairFileName = "Repair.xml";
 
+        private readonly string ClientFileName = "Client.xml";
+
         private readonly string WarehouseFileName = "Warehouse.xml";
 
         public List<Component> Components { get; set; }
@@ -28,6 +30,8 @@ namespace RepairShopFileImplement
 
         public List<Repair> Repairs { get; set; }
 
+        public List<Client> Clients { get; set; }
+
         public List<Warehouse> Warehouses { get; set; }
 
         private FileDataListSingleton()
@@ -35,6 +39,7 @@ namespace RepairShopFileImplement
             Components = LoadComponents();
             Orders = LoadOrders();
             Repairs = LoadRepairs();
+            Clients = LoadClients();
             Warehouses = LoadWarehouses();
         }
 
@@ -52,6 +57,7 @@ namespace RepairShopFileImplement
             SaveComponents();
             SaveOrders();
             SaveRepairs();
+            SaveClients();
             SaveWarehouses();
         }
 
@@ -109,6 +115,7 @@ namespace RepairShopFileImplement
                     list.Add(new Order
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        ClientId = Convert.ToInt32(elem.Element("ClientId").Value),
                         RepairId = Convert.ToInt32(elem.Element("RepairId").Value),
                         Count = Convert.ToInt32(elem.Element("Count").Value),
                         Sum = Convert.ToDecimal(elem.Element("Sum").Value),
@@ -140,6 +147,27 @@ namespace RepairShopFileImplement
                         RepairName = elem.Element("RepairName").Value,
                         Price = Convert.ToDecimal(elem.Element("Price").Value),
                         RepairComponents = prodComp
+                    });
+                }
+            }
+            return list;
+        }
+
+        private List<Client> LoadClients()
+        {
+            var list = new List<Client>();
+            if (File.Exists(ClientFileName))
+            {
+                XDocument xDocument = XDocument.Load(ClientFileName);
+                var xElements = xDocument.Root.Elements("Client").ToList();
+                foreach (var elem in xElements)
+                {
+                    list.Add(new Client
+                    {
+                        Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        ClientFIO = elem.Element("ClientFIO").Value,
+                        Email = elem.Element("Email").Value,
+                        Password = elem.Element("Password").Value,
                     });
                 }
             }
@@ -198,6 +226,7 @@ namespace RepairShopFileImplement
                 {
                     xElement.Add(new XElement("Order",
                     new XAttribute("Id", order.Id),
+                    new XElement("ClientId", order.ClientId),
                     new XElement("RepairId", order.RepairId),
                     new XElement("Count", order.Count),
                     new XElement("Sum", order.Sum),
@@ -232,6 +261,24 @@ namespace RepairShopFileImplement
                 }
                 XDocument xDocument = new XDocument(xElement);
                 xDocument.Save(RepairFileName);
+            }
+        }
+
+        private void SaveClients()
+        {
+            if (Clients != null)
+            {
+                var xElement = new XElement("Clients");
+                foreach (var client in Clients)
+                {
+                    xElement.Add(new XElement("Client",
+                    new XAttribute("Id", client.Id),
+                    new XElement("ClientFIO", client.ClientFIO),
+                    new XElement("Email", client.Email),
+                    new XElement("Password", client.Password)));
+                }
+                XDocument xDocument = new XDocument(xElement);
+                xDocument.Save(ClientFileName);
             }
         }
 

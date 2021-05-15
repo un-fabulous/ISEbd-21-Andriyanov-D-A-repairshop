@@ -208,6 +208,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClients.Designer.cs">
+      <DependentUpon>FormClients.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormComponents.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +301,9 @@
       <DependentUpon>FormComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="FormClients.resx">
+      <DependentUpon>FormClients.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormComponents.resx">
       <DependentUpon>FormComponents.cs</DependentUpon>
     </EmbeddedResource>
@@ -381,16 +390,20 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RepairShopBusinessLogic\RepairShopBusinessLogic.csproj">
-      <Project>{a42a2f8a-a125-4839-9574-7eed0647e0e4}</Project>
+      <Project>{944e6fa6-d152-4daa-82ed-c3c0e65839c5}</Project>
       <Name>RepairShopBusinessLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\RepairShopDatabaseImplement\RepairShopDatabaseImplement.csproj">
-      <Project>{807de903-578e-40cc-9de6-5dd7cb8b6ccb}</Project>
+      <Project>{4daff6e8-7b7e-471a-8849-ae93a816c70a}</Project>
       <Name>RepairShopDatabaseImplement</Name>
     </ProjectReference>
     <ProjectReference Include="..\RepairShopFileImplement\RepairShopFileImplement.csproj">
-      <Project>{1cef9704-4c55-4fd7-93af-d827c911f908}</Project>
+      <Project>{6bbb3683-363b-402a-8573-3420886a117c}</Project>
       <Name>RepairShopFileImplement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RepairShopListImplement\RepairShopListImplement.csproj">
+      <Project>{b5e655dd-eee6-46ea-a191-ddfec5d6bdb3}</Project>
+      <Name>RepairShopListImplement</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

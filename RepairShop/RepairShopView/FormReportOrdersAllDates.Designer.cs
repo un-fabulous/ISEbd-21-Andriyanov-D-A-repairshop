@@ -40,6 +40,9 @@ namespace RepairShopView
             // 
             // reportViewer
             // 
+            //reportDataSource2.Name = "DataSetOrdersAllDate";
+            //reportDataSource2.Value = this.ReportOrdersAllDatesViewModelBindingSource;
+            //this.reportViewer.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer.LocalReport.ReportEmbeddedResource = "RepairShopView.ReportOrdersAllDate.rdlc";
             this.reportViewer.Location = new System.Drawing.Point(3, 3);
             this.reportViewer.Name = "reportViewer";
