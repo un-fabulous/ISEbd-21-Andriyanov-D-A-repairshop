@@ -4,6 +4,7 @@ using System.Text;
 using RepairShopBusinessLogic.BindingModels;
 using RepairShopBusinessLogic.Interfaces;
 using RepairShopBusinessLogic.ViewModels;
+using RepairShopBusinessLogic.Enums;
 using RepairShopListImplement.Models;
 
 namespace RepairShopListImplement.Implements
@@ -35,12 +36,14 @@ namespace RepairShopListImplement.Implements
             }
             List<OrderViewModel> result = new List<OrderViewModel>();
 
-
             foreach (var order in source.Orders)
             {
                 if ((!model.DateFrom.HasValue && !model.DateTo.HasValue && order.DateCreate.Date == model.DateCreate.Date) ||
                     (model.DateFrom.HasValue && model.DateTo.HasValue && order.DateCreate.Date >= model.DateFrom.Value.Date && order.DateCreate.Date <= model.DateTo.Value.Date) ||
-                    (model.ClientId.HasValue && order.ClientId == model.ClientId))
+                    (model.ClientId.HasValue && order.ClientId == model.ClientId) ||
+                    (model.FreeOrders.HasValue && model.FreeOrders.Value && order.Status == OrderStatus.Принят) ||
+                    (model.ImplementerId.HasValue && order.ImplementerId == model.ImplementerId && order.Status == OrderStatus.Выполняется) ||
+                    (model.NeedComponentOrders.HasValue && model.NeedComponentOrders.Value && order.Status == OrderStatus.ТребуютсяМатериалы))
                 {
                     result.Add(CreateModel(order));
                 }
@@ -110,6 +113,7 @@ namespace RepairShopListImplement.Implements
         private Order CreateModel(OrderBindingModel model, Order order)
         {
             order.ClientId = model.ClientId.Value;
+            order.ImplementerId = model.ImplementerId;
             order.RepairId = model.RepairId;
             order.Count = model.Count;
             order.Sum = model.Sum;
@@ -141,6 +145,16 @@ namespace RepairShopListImplement.Implements
                 }
             }
 
+            string implementerFio = null;
+            foreach (var implementer in source.Implementers)
+            {
+                if (implementer.Id == order.ImplementerId)
+                {
+                    implementerFio = implementer.ImplementerFIO;
+                }
+            }
+
+
             return new OrderViewModel
             {
                 Id = order.Id,
@@ -152,7 +166,8 @@ namespace RepairShopListImplement.Implements
                 Sum = order.Sum,
                 Status = order.Status,
                 RepairName = repairName,
-                ClientFIO = clientFio
+                ClientFIO = clientFio,
+                ImplementerFIO = order.ImplementerId.HasValue ? implementerFio : string.Empty
             };
         }
     }

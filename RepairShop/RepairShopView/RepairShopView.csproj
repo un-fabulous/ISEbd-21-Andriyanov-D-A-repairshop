@@ -244,6 +244,18 @@
     <Compile Include="FormRepairs.Designer.cs">
       <DependentUpon>FormRepairs.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormImplementer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImplementer.Designer.cs">
+      <DependentUpon>FormImplementer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormImplementers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImplementers.Designer.cs">
+      <DependentUpon>FormImplementers.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,6 +331,12 @@
     <EmbeddedResource Include="FormRepairs.resx">
       <DependentUpon>FormRepairs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormImplementer.resx">
+      <DependentUpon>FormImplementer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormImplementers.resx">
+      <DependentUpon>FormImplementers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -390,19 +408,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RepairShopBusinessLogic\RepairShopBusinessLogic.csproj">
-      <Project>{944e6fa6-d152-4daa-82ed-c3c0e65839c5}</Project>
+      <Project>{1ed61027-df1d-4e4a-a6f8-16803b1af4b3}</Project>
       <Name>RepairShopBusinessLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\RepairShopDatabaseImplement\RepairShopDatabaseImplement.csproj">
-      <Project>{4daff6e8-7b7e-471a-8849-ae93a816c70a}</Project>
+      <Project>{ed53106c-cf1e-43e8-9a35-a811b79ba924}</Project>
       <Name>RepairShopDatabaseImplement</Name>
     </ProjectReference>
     <ProjectReference Include="..\RepairShopFileImplement\RepairShopFileImplement.csproj">
-      <Project>{6bbb3683-363b-402a-8573-3420886a117c}</Project>
+      <Project>{ba3c23ff-3725-40a7-97c2-ef9cc43bfb62}</Project>
       <Name>RepairShopFileImplement</Name>
     </ProjectReference>
     <ProjectReference Include="..\RepairShopListImplement\RepairShopListImplement.csproj">
-      <Project>{b5e655dd-eee6-46ea-a191-ddfec5d6bdb3}</Project>
+      <Project>{b4a9ccba-4f38-47dd-b84f-fb46dc084393}</Project>
       <Name>RepairShopListImplement</Name>
     </ProjectReference>
   </ItemGroup>
