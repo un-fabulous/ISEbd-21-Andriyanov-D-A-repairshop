@@ -17,6 +17,7 @@ namespace RepairShopListImplement.Implements
         {
             source = DataListSingleton.GetInstance();
         }
+
         public List<WarehouseViewModel> GetFullList()
         {
             List<WarehouseViewModel> result = new List<WarehouseViewModel>();
