@@ -330,7 +330,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report.rdlc" />
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\GiftShopBusinessLogic.ViewModels.ReportOrdersViewModel.datasource" />
+    <None Include="Properties\DataSources\RepairShopBusinessLogic.ViewModels.ReportOrdersViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
