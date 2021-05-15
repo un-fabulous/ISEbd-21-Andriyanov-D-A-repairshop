@@ -4,6 +4,7 @@ using System.Linq;
 using RepairShopBusinessLogic.BindingModels;
 using RepairShopBusinessLogic.Interfaces;
 using RepairShopBusinessLogic.ViewModels;
+using RepairShopBusinessLogic.Enums;
 using RepairShopFileImplement.Models;
 
 namespace RepairShopFileImplement.Implements
@@ -30,9 +31,12 @@ namespace RepairShopFileImplement.Implements
             }
 
             return source.Orders
-                 .Where(rec => (model.ClientId.HasValue && rec.ClientId == model.ClientId) || (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate == model.DateCreate) ||
-                 (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date))
-                 .Select(CreateModel).ToList();
+                  .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate.Date == model.DateCreate.Date) ||
+                    (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) ||
+                    (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
+                    (model.FreeOrders.HasValue && model.FreeOrders.Value && rec.Status == OrderStatus.Принят) ||
+                    (model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Выполняется))
+                    .Select(CreateModel).ToList();
         }
 
         public OrderViewModel GetElement(OrderBindingModel model)
@@ -79,6 +83,7 @@ namespace RepairShopFileImplement.Implements
         {
             order.RepairId = model.RepairId;
             order.ClientId = model.ClientId.Value;
+            order.ImplementerId = model.ImplementerId.Value;
             order.Count = model.Count;
             order.Sum = model.Sum;
             order.Status = model.Status;
@@ -94,13 +99,15 @@ namespace RepairShopFileImplement.Implements
                 Id = order.Id,
                 RepairId = order.RepairId,
                 ClientId = order.ClientId,
+                ImplementerId = order.ImplementerId,
                 Count = order.Count,
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement,
                 Sum = order.Sum,
                 Status = order.Status,
                 RepairName = source.Repairs.FirstOrDefault(rec => rec.Id == order.RepairId)?.RepairName,
-                ClientFIO = source.Clients.FirstOrDefault(rec => rec.Id == order.ClientId)?.ClientFIO
+                ClientFIO = source.Clients.FirstOrDefault(rec => rec.Id == order.ClientId)?.ClientFIO,
+                ImplementerFIO = source.Implementers.FirstOrDefault(rec => rec.Id == order.ImplementerId)?.ImplementerFIO
             };
         }
     }

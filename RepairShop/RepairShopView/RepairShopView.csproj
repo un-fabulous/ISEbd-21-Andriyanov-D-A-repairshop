@@ -244,6 +244,18 @@
     <Compile Include="FormRepairs.Designer.cs">
       <DependentUpon>FormRepairs.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormImplementer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImplementer.Designer.cs">
+      <DependentUpon>FormImplementer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormImplementers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImplementers.Designer.cs">
+      <DependentUpon>FormImplementers.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +301,12 @@
     <EmbeddedResource Include="FormRepairs.resx">
       <DependentUpon>FormRepairs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormImplementer.resx">
+      <DependentUpon>FormImplementer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormImplementers.resx">
+      <DependentUpon>FormImplementers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -312,7 +330,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report.rdlc" />
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\RepairShopBusinessLogic.ViewModels.ReportOrdersViewModel.datasource" />
+    <None Include="Properties\DataSources\GiftShopBusinessLogic.ViewModels.ReportOrdersViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -343,19 +361,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RepairShopBusinessLogic\RepairShopBusinessLogic.csproj">
-      <Project>{6217f430-0385-454f-9c00-110309a72c41}</Project>
+      <Project>{ed2735d2-122a-4f18-97a8-4afadd7f75c6}</Project>
       <Name>RepairShopBusinessLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\RepairShopDatabaseImplement\RepairShopDatabaseImplement.csproj">
-      <Project>{9c8e9352-6798-4446-88e4-e42f850aabca}</Project>
+      <Project>{d86eb84e-4ab9-40a4-9fdb-d485bad79f16}</Project>
       <Name>RepairShopDatabaseImplement</Name>
     </ProjectReference>
     <ProjectReference Include="..\RepairShopFileImplement\RepairShopFileImplement.csproj">
-      <Project>{d707d341-98e9-4afd-ae10-2a3c46a07ec9}</Project>
+      <Project>{f657efe3-b0cf-4891-895f-800e73e34b83}</Project>
       <Name>RepairShopFileImplement</Name>
     </ProjectReference>
     <ProjectReference Include="..\RepairShopListImplement\RepairShopListImplement.csproj">
-      <Project>{706cf756-60dd-4b4a-8c5d-c7381ea912c1}</Project>
+      <Project>{1e960bc6-7a84-4443-a966-25e594d406de}</Project>
       <Name>RepairShopListImplement</Name>
     </ProjectReference>
   </ItemGroup>

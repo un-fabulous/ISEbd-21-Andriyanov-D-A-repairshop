@@ -11,6 +11,8 @@ namespace RepairShopListImplement.Models
 
         public int ClientId { get; set; }
 
+        public int? ImplementerId { get; set; }
+
         public int RepairId { get; set; }
 
         public int Count { get; set; }

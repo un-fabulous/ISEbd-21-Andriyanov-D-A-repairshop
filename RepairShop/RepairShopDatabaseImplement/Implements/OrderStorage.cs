@@ -4,6 +4,7 @@ using System.Linq;
 using RepairShopBusinessLogic.BindingModels;
 using RepairShopBusinessLogic.Interfaces;
 using RepairShopBusinessLogic.ViewModels;
+using RepairShopBusinessLogic.Enums;
 using RepairShopDatabaseImplement.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,11 +17,13 @@ namespace RepairShopDatabaseImplement.Implements
             using (var context = new RepairShopDatabase())
             {
                 return context.Orders.Include(rec => rec.Repair).Include(rec => rec.Client)
-                    .Select(rec => new OrderViewModel
+                    .Include(rec => rec.Implementer).Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
                     ClientId = rec.ClientId,
                     ClientFIO = rec.Client.ClientFIO,
+                    ImplementerId = rec.ImplementerId,
+                    ImplementerFIO = rec.ImplementerId.HasValue ? rec.Implementer.ImplementerFIO : string.Empty,
                     RepairId = rec.RepairId,
                     RepairName = rec.Repair.RepairName,
                     Count = rec.Count,
@@ -41,14 +44,19 @@ namespace RepairShopDatabaseImplement.Implements
 
             using (var context = new RepairShopDatabase())
             {
-                return context.Orders.Include(rec => rec.Repair).Include(rec => rec.Client)
-                .Where(rec => (model.ClientId.HasValue && rec.ClientId == model.ClientId) || (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate == model.DateCreate) ||
-                (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date))
+                return context.Orders.Include(rec => rec.Repair).Include(rec => rec.Client).Include(rec => rec.Implementer)
+                    .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate.Date == model.DateCreate.Date) ||
+                    (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) ||
+                    (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
+                    (model.FreeOrders.HasValue && model.FreeOrders.Value && rec.Status == OrderStatus.Принят) ||
+                    (model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Выполняется))
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
                     ClientId = rec.ClientId,
                     ClientFIO = rec.Client.ClientFIO,
+                    ImplementerId = rec.ImplementerId,
+                    ImplementerFIO = rec.ImplementerId.HasValue ? rec.Implementer.ImplementerFIO : string.Empty,
                     RepairId = rec.RepairId,
                     RepairName = rec.Repair.RepairName,
                     Count = rec.Count,
@@ -70,7 +78,7 @@ namespace RepairShopDatabaseImplement.Implements
             }
             using (var context = new RepairShopDatabase())
             {
-                var order = context.Orders.Include(rec => rec.Repair).Include(rec => rec.Client)
+                var order = context.Orders.Include(rec => rec.Repair).Include(rec => rec.Client).Include(rec => rec.Implementer)
                 .FirstOrDefault(rec => rec.Id == model.Id);
                 return order != null ?
                 new OrderViewModel
@@ -78,6 +86,8 @@ namespace RepairShopDatabaseImplement.Implements
                     Id = order.Id,
                     ClientId = order.ClientId,
                     ClientFIO = order.Client.ClientFIO,
+                    ImplementerId = order.ImplementerId,
+                    ImplementerFIO = order.ImplementerId.HasValue ? order.Implementer.ImplementerFIO : string.Empty,
                     RepairId = order.RepairId,
                     RepairName = order.Repair.RepairName,
                     Count = order.Count,
@@ -139,6 +149,7 @@ namespace RepairShopDatabaseImplement.Implements
             order.DateCreate = model.DateCreate;
             order.DateImplement = model.DateImplement;
             order.ClientId = model.ClientId.Value;
+            order.ImplementerId = model.ImplementerId;
             return order;
         }
     }
