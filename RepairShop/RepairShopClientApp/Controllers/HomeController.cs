@@ -125,7 +125,7 @@ namespace RepairShopClientApp.Controllers
 
             APIClient.PostRequest("api/main/createorder", new CreateOrderBindingModel
             {
-                ClientId = (int)Program.Client.Id,
+                ClientId = Program.Client.Id,
                 RepairId = repair,
                 Count = count,
                 Sum = sum
@@ -139,6 +139,15 @@ namespace RepairShopClientApp.Controllers
         {
             RepairViewModel prod = APIClient.GetRequest<RepairViewModel>($"api/main/getrepair?repairId={repair}");
             return count * prod.Price;
+        }
+
+        public IActionResult Mails()
+        {
+            if (Program.Client == null)
+            {
+                return Redirect("~/Home/Enter");
+            }
+            return View(APIClient.GetRequest<List<MessageInfoViewModel>>($"api/client/GetMessages?clientId={Program.Client.Id}"));
         }
     }
 }

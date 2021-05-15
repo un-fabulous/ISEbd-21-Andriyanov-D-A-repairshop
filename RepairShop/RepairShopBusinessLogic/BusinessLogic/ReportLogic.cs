@@ -11,18 +11,20 @@ namespace RepairShopBusinessLogic.BusinessLogic
 {
     public class ReportLogic
     {
+        private readonly IComponentStorage _componentStorage;
         private readonly IRepairStorage _repairStorage;
-
         private readonly IOrderStorage _orderStorage;
 
-        public ReportLogic(IRepairStorage repairStorage, IOrderStorage orderStorage)
+        public ReportLogic(IRepairStorage repairStorage, IComponentStorage componentStorage, IOrderStorage orderStorage)
         {
             _repairStorage = repairStorage;
+            _componentStorage = componentStorage;
             _orderStorage = orderStorage;
         }
 
         public List<ReportRepairComponentViewModel> GetComponentsRepair()
         {
+            var components = _componentStorage.GetFullList();
             var repairs = _repairStorage.GetFullList();
             var list = new List<ReportRepairComponentViewModel>();
             foreach (var repair in repairs)
@@ -34,10 +36,13 @@ namespace RepairShopBusinessLogic.BusinessLogic
                     TotalCount = 0
                 };
 
-                foreach (var component in repair.RepairComponents)
+                foreach (var component in components)
                 {
-                    record.Components.Add(new Tuple<string, int>(component.Value.Item1, component.Value.Item2));
-                    record.TotalCount += component.Value.Item2;
+                    if (repair.RepairComponents.ContainsKey(component.Id))
+                    {
+                        record.Components.Add(new Tuple<string, int>(component.ComponentName, repair.RepairComponents[component.Id].Item2));
+                        record.TotalCount += repair.RepairComponents[component.Id].Item2;
+                    }
                 }
                 list.Add(record);
             }

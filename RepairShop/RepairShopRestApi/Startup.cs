@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RepairShopBusinessLogic.BusinessLogic;
 using RepairShopBusinessLogic.Interfaces;
+using RepairShopBusinessLogic.HelperModels;
 using RepairShopDatabaseImplement.Implements;
 
 namespace RepairShopRestApi
@@ -31,9 +32,18 @@ namespace RepairShopRestApi
             services.AddTransient<IClientStorage, ClientStorage>();
             services.AddTransient<IOrderStorage, OrderStorage>();
             services.AddTransient<IRepairStorage, RepairStorage>();
+            services.AddTransient<IMessageInfoStorage, MessageInfoStorage>();
             services.AddTransient<OrderLogic>();
             services.AddTransient<ClientLogic>();
             services.AddTransient<RepairLogic>();
+            services.AddTransient<MailLogic>();
+            MailLogic.MailConfig(new MailConfig
+            {
+                SmtpClientHost = "smtp.gmail.com",
+                SmtpClientPort = 587,
+                MailLogin = "anderdeea1042@gmail.com",
+                MailPassword = "anddea10422",
+            });
             services.AddControllers().AddNewtonsoftJson();
         }
 

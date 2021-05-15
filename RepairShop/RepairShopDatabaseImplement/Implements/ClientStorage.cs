@@ -34,7 +34,7 @@ namespace RepairShopDatabaseImplement.Implements
             }
             using (var context = new RepairShopDatabase())
             {
-                return context.Clients
+                return context.Clients.Include(x => x.Order)
                 .Where(rec => rec.Email == model.Email && rec.Password == rec.Password)
                 .Select(rec => new ClientViewModel
                 {
@@ -55,7 +55,7 @@ namespace RepairShopDatabaseImplement.Implements
             }
             using (var context = new RepairShopDatabase())
             {
-                var client = context.Clients
+                var client = context.Clients.Include(x => x.Order)
                 .FirstOrDefault(rec => rec.Email == model.Email || rec.Id == model.Id);
                 return client != null ?
                 new ClientViewModel

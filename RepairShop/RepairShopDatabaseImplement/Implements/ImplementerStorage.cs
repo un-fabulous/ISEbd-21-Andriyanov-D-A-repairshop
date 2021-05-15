@@ -34,7 +34,7 @@ namespace RepairShopDatabaseImplement.Implements
             }
             using (var context = new RepairShopDatabase())
             {
-                return context.Implementers
+                return context.Implementers.Include(x => x.Order)
                 .Where(rec => rec.ImplementerFIO == model.ImplementerFIO)
                 .Select(rec => new ImplementerViewModel
                 {
@@ -55,7 +55,7 @@ namespace RepairShopDatabaseImplement.Implements
             }
             using (var context = new RepairShopDatabase())
             {
-                var implementer = context.Implementers
+                var implementer = context.Implementers.Include(x => x.Order)
                 .FirstOrDefault(rec => rec.Id == model.Id);
                 return implementer != null ?
                 new ImplementerViewModel
@@ -85,7 +85,7 @@ namespace RepairShopDatabaseImplement.Implements
                 var element = context.Implementers.FirstOrDefault(rec => rec.Id == model.Id);
                 if (element == null)
                 {
-                    throw new Exception("Исполнитель не найден");
+                    throw new Exception("Клиент не найден");
                 }
                 CreateModel(model, element);
                 context.SaveChanges();
@@ -104,7 +104,7 @@ namespace RepairShopDatabaseImplement.Implements
                 }
                 else
                 {
-                    throw new Exception("Исполнитель не найден");
+                    throw new Exception("Клиент не найден");
                 }
             }
         }

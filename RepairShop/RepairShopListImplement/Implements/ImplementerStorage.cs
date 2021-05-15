@@ -36,7 +36,7 @@ namespace RepairShopListImplement.Implements
             List<ImplementerViewModel> result = new List<ImplementerViewModel>();
             foreach (var implementer in source.Implementers)
             {
-                if (implementer.ImplementerFIO.Contains(model.ImplementerFIO))
+                if (implementer.ImplementerFIO.ToString().Contains(model.ImplementerFIO.ToString()))
                 {
                     result.Add(CreateModel(implementer));
                 }

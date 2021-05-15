@@ -36,7 +36,7 @@ namespace RepairShopListImplement.Implements
             List<ClientViewModel> result = new List<ClientViewModel>();
             foreach (var client in source.Clients)
             {
-                if (client.Email == model.Email && client.Password == model.Password)
+                if (client.Email.Contains(model.Email))
                 {
                     result.Add(CreateModel(client));
                 }
