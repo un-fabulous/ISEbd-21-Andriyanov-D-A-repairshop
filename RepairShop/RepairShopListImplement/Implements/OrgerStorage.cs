@@ -148,7 +148,7 @@ namespace RepairShopListImplement.Implements
             string implementerFio = null;
             foreach (var implementer in source.Implementers)
             {
-                if (implementer.Id == order.ImplementerId)
+                if (implementer.Id == order.RepairId)
                 {
                     implementerFio = implementer.ImplementerFIO;
                 }
@@ -167,7 +167,7 @@ namespace RepairShopListImplement.Implements
                 Status = order.Status,
                 RepairName = repairName,
                 ClientFIO = clientFio,
-                ImplementerFIO = order.ImplementerId.HasValue ? implementerFio : string.Empty
+                ImplementerFIO = implementerFio
             };
         }
     }

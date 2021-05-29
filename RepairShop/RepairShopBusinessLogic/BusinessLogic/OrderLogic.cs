@@ -67,7 +67,7 @@ namespace RepairShopBusinessLogic.BusinessLogic
                 OrderBindingModel orderModel = new OrderBindingModel
                 {
                     Id = order.Id,
-                    RepairId = order.RepairId,                   
+                    RepairId = order.RepairId,
                     Count = order.Count,
                     Sum = order.Sum,
                     DateCreate = order.DateCreate,
@@ -121,7 +121,7 @@ namespace RepairShopBusinessLogic.BusinessLogic
             {
                 throw new Exception("Заказ не в статусе \"Готов\"");
             }
-            _orderStorage.Update(new OrderBindingModel 
+            _orderStorage.Update(new OrderBindingModel
             {
                 Id = order.Id,
                 RepairId = order.RepairId,
@@ -130,8 +130,7 @@ namespace RepairShopBusinessLogic.BusinessLogic
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement,
                 Status = OrderStatus.Оплачен,
-                ClientId = order.ClientId,
-                ImplementerId = order.ImplementerId
+                ClientId = order.ClientId
             });
         }
     }
