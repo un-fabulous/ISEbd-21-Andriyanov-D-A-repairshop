@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using RepairShopBusinessLogic.Attributes;
 
 namespace RepairShopBusinessLogic.ViewModels
 {
@@ -10,14 +11,15 @@ namespace RepairShopBusinessLogic.ViewModels
     public class RepairViewModel
     {
         [DataMember]
+        [Column(title: "Номер", width: 100, visible: false)]
         public int Id { get; set; }
 
         [DataMember]
-        [DisplayName("Название изделия")]
+        [Column(title: "Название изделия", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string RepairName { get; set; }
 
         [DataMember]
-        [DisplayName("Цена")]
+        [Column(title: "Цена", width: 100)]
         public decimal Price { get; set; }
 
         [DataMember]
