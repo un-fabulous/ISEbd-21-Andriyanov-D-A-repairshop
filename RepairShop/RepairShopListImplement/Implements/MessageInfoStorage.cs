@@ -33,43 +33,77 @@ namespace RepairShopListImplement.Implements
                 return null;
             }
             List<MessageInfoViewModel> result = new List<MessageInfoViewModel>();
-            foreach (var message in source.MessageInfoes)
+            foreach (var messageInfo in source.MessageInfoes)
             {
-                if ((model.ClientId.HasValue && message.ClientId == model.ClientId) ||
-                    (!model.ClientId.HasValue && message.DateDelivery.Date == model.DateDelivery.Date))
+                if (messageInfo.Subject.Contains(model.Subject))
                 {
-                    result.Add(CreateModel(message));
+                    result.Add(CreateModel(messageInfo));
                 }
             }
-            if (result.Count > 0)
+            return result;
+        }
+
+        public MessageInfoViewModel GetElement(MessageInfoBindingModel model)
+        {
+            if (model == null)
             {
-                return result;
+                return null;
+            }
+            foreach (var messageInfo in source.MessageInfoes)
+            {
+                if (messageInfo.MessageId == model.MessageId)
+                {
+                    return CreateModel(messageInfo);
+                }
             }
             return null;
         }
 
         public void Insert(MessageInfoBindingModel model)
         {
-            if (model == null)
+            MessageInfo tempMessageInfo = new MessageInfo { MessageId = "1" };
+            foreach (var messageInfo in source.MessageInfoes)
             {
-                return;
+                if (Convert.ToInt32(messageInfo.MessageId) >= Convert.ToInt32(tempMessageInfo.MessageId))
+                {
+                    tempMessageInfo.MessageId = messageInfo.MessageId + 1;
+                }
             }
-            source.MessageInfoes.Add(CreateModel(model, new MessageInfo()));
+            source.MessageInfoes.Add(CreateModel(model, tempMessageInfo));
+        }
+
+        public void Update(MessageInfoBindingModel model)
+        {
+            MessageInfo tempMessageInfo = null;
+            foreach (var messageInfo in source.MessageInfoes)
+            {
+                if (messageInfo.MessageId == model.MessageId)
+                {
+                    tempMessageInfo = messageInfo;
+                }
+            }
+            if (tempMessageInfo == null)
+            {
+                throw new Exception("Элемент не найден");
+            }
+            CreateModel(model, tempMessageInfo);
+        }
+
+        public void Delete(MessageInfoBindingModel model)
+        {
+            for (int i = 0; i < source.MessageInfoes.Count; ++i)
+            {
+                if (source.MessageInfoes[i].MessageId == model.MessageId)
+                {
+                    source.MessageInfoes.RemoveAt(i);
+                    return;
+                }
+            }
+            throw new Exception("Элемент не найден");
         }
 
         private MessageInfo CreateModel(MessageInfoBindingModel model, MessageInfo messageInfo)
         {
-            string clientName = string.Empty;
-            foreach (var client in source.Clients)
-            {
-
-                if (client.Id == model.ClientId)
-                {
-                    clientName = client.ClientFIO;
-                    break;
-                }
-            }
-            messageInfo.SenderName = clientName;
             messageInfo.Subject = model.Subject;
             messageInfo.ClientId = model.ClientId;
             messageInfo.Body = model.Body;
